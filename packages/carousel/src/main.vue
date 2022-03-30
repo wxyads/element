@@ -47,7 +47,8 @@
         @mouseenter="throttledIndicatorHover(index)"
         @click.stop="handleIndicatorClick(index)">
         <button class="el-carousel__button">
-          <span v-if="hasLabel">{{ item.label }}</span>
+          <img v-if="hasLabel && indictType === 'image'" :src="item.label" />
+          <span v-else>{{ item.label }}</span>
         </button>
       </li>
     </ul>
@@ -62,6 +63,10 @@ export default {
   name: 'ElCarousel',
 
   props: {
+    indictType: {
+      type: String,
+      default: 'text'
+    },
     initialIndex: {
       type: Number,
       default: 0

@@ -36,6 +36,8 @@
       :min="min"
       :name="name"
       :label="label"
+      :prefix="prefix"
+      :suffix="suffix"
       @keydown.up.native.prevent="increase"
       @keydown.down.native.prevent="decrease"
       @blur="handleBlur"
@@ -103,7 +105,9 @@
         validator(val) {
           return val >= 0 && val === parseInt(val, 10);
         }
-      }
+      },
+      prefix: String,
+      suffix: String
     },
     data() {
       return {

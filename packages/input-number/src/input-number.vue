@@ -8,24 +8,6 @@
       { 'is-without-controls': !controls },
       { 'is-controls-right': controlsAtRight }
     ]">
-    <span
-      class="el-input-number__decrease"
-      role="button"
-      v-if="controls"
-      v-repeat-click="decrease"
-      :class="{'is-disabled': minDisabled}"
-      @keydown.enter="decrease">
-      <i :class="`el-icon-${controlsAtRight ? 'arrow-down' : 'minus'}`"></i>
-    </span>
-    <span
-      class="el-input-number__increase"
-      role="button"
-      v-if="controls"
-      v-repeat-click="increase"
-      :class="{'is-disabled': maxDisabled}"
-      @keydown.enter="increase">
-      <i :class="`el-icon-${controlsAtRight ? 'arrow-up' : 'plus'}`"></i>
-    </span>
     <el-input
       ref="input"
       :value="displayValue"
@@ -36,14 +18,36 @@
       :min="min"
       :name="name"
       :label="label"
-      :prefix="prefix"
-      :suffix="suffix"
       @keydown.up.native.prevent="increase"
       @keydown.down.native.prevent="decrease"
       @blur="handleBlur"
       @focus="handleFocus"
       @input="handleInput"
       @change="handleInputChange">
+      <template v-if="prefix || controls" slot="prepend">
+        <span
+          class="el-input-number__decrease"
+          role="button"
+          v-if="controls"
+          v-repeat-click="decrease"
+          :class="{'is-disabled': minDisabled}"
+          @keydown.enter="decrease">
+          <i :class="`el-icon-${controlsAtRight ? 'arrow-down' : 'minus'}`"></i>
+        </span>
+        <span v-if="prefix">{{ prefix }}</span>
+      </template>
+      <template v-if="suffix || controls" slot="append">
+        <span v-if="suffix">{{ suffix }}</span>
+        <span
+          class="el-input-number__increase"
+          role="button"
+          v-if="controls"
+          v-repeat-click="increase"
+          :class="{'is-disabled': maxDisabled}"
+          @keydown.enter="increase">
+          <i :class="`el-icon-${controlsAtRight ? 'arrow-up' : 'plus'}`"></i>
+        </span>
+      </template>
     </el-input>
   </div>
 </template>

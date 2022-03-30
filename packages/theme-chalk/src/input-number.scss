@@ -6,26 +6,27 @@
 @include b(input-number) {
   position: relative;
   display: inline-block;
-  width: 180px;
   line-height: #{$--input-height - 2};
 
   .el-input {
-    display: block;
+    display: inline-table;
 
     &__inner {
       -webkit-appearance: none;
-      padding-left: #{$--input-height + 10};
-      padding-right: #{$--input-height + 10};
+      width: 180px;
+      padding-left: #{$--input-height - 10};
+      padding-right: #{$--input-height - 10};
       text-align: center;
     }
   }
 
   @include e((increase, decrease)) {
-    position: absolute;
+    position: relative;
     z-index: 1;
     top: 1px;
     width: $--input-height;
     height: auto;
+    padding: 0 10px;
     text-align: center;
     background: $--background-color-base;
     color: $--color-text-regular;
@@ -47,13 +48,13 @@
   }
 
   @include e(increase) {
-    right: 1px;
+    right: -15px;
     border-radius: 0 $--border-radius-base $--border-radius-base 0;
     border-left: $--border-base;
   }
 
   @include e(decrease) {
-    left: 1px;
+    left: -15px;
     border-radius: $--border-radius-base 0 0 $--border-radius-base;
     border-right: $--border-base;
   }
@@ -71,7 +72,6 @@
   }
 
   @include m(medium) {
-    width: 200px;
     line-height: #{$--input-medium-height - 2};
 
     @include e((increase, decrease)) {
@@ -80,13 +80,13 @@
     }
 
     .el-input__inner {
-      padding-left: #{$--input-medium-height + 7};
-      padding-right: #{$--input-medium-height + 7};
+      width: 200px;
+      padding-left: #{$--input-medium-height - 10};
+      padding-right: #{$--input-medium-height - 10};
     }
   }
 
   @include m(small) {
-    width: 130px;
     line-height: #{$--input-small-height - 2};
 
     @include e((increase, decrease)) {
@@ -99,13 +99,13 @@
     }
 
     .el-input__inner {
-      padding-left: #{$--input-small-height + 7};
-      padding-right: #{$--input-small-height + 7};
+      width: 130px;
+      padding-left: #{$--input-small-height - 10};
+      padding-right: #{$--input-small-height - 10};
     }
   }
 
   @include m(mini) {
-    width: 130px;
     line-height: #{$--input-mini-height - 2};
 
     @include e((increase, decrease)) {
@@ -118,8 +118,9 @@
     }
 
     .el-input__inner {
-      padding-left: #{$--input-mini-height + 7};
-      padding-right: #{$--input-mini-height + 7};
+      width: 130px;
+      padding-left: #{$--input-mini-height - 10};
+      padding-right: #{$--input-mini-height - 10};
     }
   }
 

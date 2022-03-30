@@ -26,6 +26,40 @@
 ```
 :::
 
+### 前缀后缀
+
+:::demo 要使用它，前缀prefix，后缀suffix
+```html
+<template>
+  <el-input-number
+    v-model="num"
+    @change="handleChange"
+    :min="1"
+    :max="10"
+    label="描述文字"
+    :prefix="prefix"
+    :suffix="suffix"
+  ></el-input-number>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        num: 1,
+        prefix: 'prefix',
+        suffix: 'suffix'
+      };
+    },
+    methods: {
+      handleChange(value) {
+        console.log(value);
+      }
+    }
+  };
+</script>
+```
+:::
+
 ### 禁用状态
 
 :::demo `disabled`属性接受一个`Boolean`，设置为`true`即可禁用整个组件，如果你只需要控制数值在某一范围内，可以设置`min`属性和`max`属性，不设置`min`和`max`时，最小值为 0。
